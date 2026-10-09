@@ -73,4 +73,57 @@ describe('Suíte de Testes Fraca para 50 Operações Aritméticas', () => {
   test('48. deve calcular o dobro de um número', () => { expect(dobro(10)).toBe(20); });
   test('49. deve calcular o triplo de um número', () => { expect(triplo(10)).toBe(30); });
   test('50. deve calcular a metade de um número', () => { expect(metade(20)).toBe(10); });
+  // === Testes adicionais guiados por mutacao ===
+  test('51. deve validar casos de erro e limites das operacoes basicas', () => {
+    expect(() => divisao(5, 0)).toThrow(/zero/);
+    expect(raizQuadrada(0)).toBe(0);
+    expect(() => raizQuadrada(-1)).toThrow(/negativo/);
+    expect(fatorial(0)).toBe(1);
+    expect(fatorial(1)).toBe(1);
+    expect(() => fatorial(-1)).toThrow(/negativos/);
+    expect(mediaArray([])).toBe(0);
+  });
+
+  test('52. deve validar arrays vazios e classificacoes booleanas negativas', () => {
+    expect(() => maximoArray([])).toThrow(/vazio/);
+    expect(() => minimoArray([])).toThrow(/vazio/);
+    expect(isPar(99)).toBe(false);
+    expect(isImpar(8)).toBe(false);
+    expect(isImpar(0)).toBe(false);
+  });
+
+  test('53. deve validar numeros nao primos, fronteiras e produto vazio', () => {
+    expect(isPrimo(1)).toBe(false);
+    expect(isPrimo(4)).toBe(false);
+    expect(isPrimo(9)).toBe(false);
+    expect(produtoArray([])).toBe(1);
+  });
+
+  test('54. deve validar clamp abaixo, acima e nas bordas', () => {
+    expect(clamp(-5, 0, 10)).toBe(0);
+    expect(clamp(15, 0, 10)).toBe(10);
+    expect(clamp(0, 0, 10)).toBe(0);
+    expect(clamp(10, 0, 10)).toBe(10);
+  });
+
+  test('55. deve validar divisibilidade falsa, conversoes nao nulas e inverso zero', () => {
+    expect(isDivisivel(10, 3)).toBe(false);
+    expect(celsiusParaFahrenheit(100)).toBe(212);
+    expect(fahrenheitParaCelsius(212)).toBe(100);
+    expect(() => inverso(0)).toThrow(/zero/);
+  });
+
+  test('56. deve validar comparacoes falsas e limites de igualdade', () => {
+    expect(isMaiorQue(5, 10)).toBe(false);
+    expect(isMaiorQue(5, 5)).toBe(false);
+    expect(isMenorQue(10, 5)).toBe(false);
+    expect(isMenorQue(5, 5)).toBe(false);
+    expect(isEqual(7, 8)).toBe(false);
+  });
+
+  test('57. deve calcular mediana para arrays pares, desordenados e vazios', () => {
+    expect(medianaArray([10, 2, 4, 6])).toBe(5);
+    expect(medianaArray([9, 1, 5])).toBe(5);
+    expect(() => medianaArray([])).toThrow(/mediana/);
+  });
 });

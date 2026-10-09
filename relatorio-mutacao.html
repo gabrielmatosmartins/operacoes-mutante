@@ -1,0 +1,264 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Relatorio de Teste de Mutacao - Operacoes</title>
+  <style>
+    :root {
+      color-scheme: light;
+      --ink: #172026;
+      --muted: #5c6670;
+      --line: #d8dee5;
+      --soft: #f4f7fa;
+      --panel: #ffffff;
+      --accent: #136f63;
+      --warn: #b54708;
+      --danger: #b42318;
+      --ok: #087443;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      color: var(--ink);
+      background: #eef2f5;
+      line-height: 1.5;
+    }
+    header {
+      background: #17324d;
+      color: #fff;
+      padding: 34px 42px;
+    }
+    header p { margin: 8px 0 0; color: #d7e3ee; }
+    main {
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 28px;
+    }
+    section {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 24px;
+      margin-bottom: 22px;
+    }
+    h1, h2, h3 { margin: 0 0 12px; line-height: 1.2; }
+    h1 { font-size: 30px; }
+    h2 { font-size: 22px; color: #17324d; }
+    h3 { font-size: 17px; margin-top: 18px; }
+    p { margin: 0 0 12px; }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 14px 0 6px;
+      font-size: 14px;
+    }
+    th, td {
+      border: 1px solid var(--line);
+      padding: 10px 12px;
+      text-align: left;
+    }
+    th { background: var(--soft); }
+    .metric-grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 12px;
+      margin-top: 16px;
+    }
+    .metric {
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 14px;
+      background: var(--soft);
+    }
+    .metric strong {
+      display: block;
+      font-size: 24px;
+      color: var(--accent);
+    }
+    .metric span { color: var(--muted); font-size: 13px; }
+    .screenshot {
+      border: 1px solid #b9c3cc;
+      border-radius: 8px;
+      overflow: hidden;
+      margin: 16px 0;
+      background: #fff;
+    }
+    .shotbar {
+      background: #243b53;
+      color: #fff;
+      padding: 9px 12px;
+      font-size: 13px;
+      letter-spacing: .02em;
+    }
+    .shotbody {
+      padding: 16px;
+      font-family: Consolas, "Courier New", monospace;
+      font-size: 13px;
+      white-space: pre-wrap;
+      background: #fbfcfd;
+    }
+    .survived { color: var(--danger); font-weight: 700; }
+    .killed { color: var(--ok); font-weight: 700; }
+    .note {
+      border-left: 4px solid var(--warn);
+      background: #fff7ed;
+      padding: 12px 14px;
+      margin: 14px 0;
+    }
+    ul { margin-top: 8px; }
+    code {
+      background: #eef2f5;
+      border: 1px solid #d8dee5;
+      border-radius: 4px;
+      padding: 1px 5px;
+    }
+    footer {
+      color: var(--muted);
+      font-size: 13px;
+      text-align: center;
+      padding: 18px;
+    }
+    @media (max-width: 760px) {
+      header { padding: 26px 22px; }
+      main { padding: 16px; }
+      .metric-grid { grid-template-columns: 1fr 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Relatorio de Teste de Mutacao - StrykerJS</h1>
+    <p>Projeto operacoes-mutante-lab | Jest + StrykerJS | Gerado em 10/05/2026</p>
+  </header>
+
+  <main>
+    <section>
+      <h2>Analise Inicial</h2>
+      <p>A suite original tinha 50 testes e todos passavam em <code>npm test</code>. A cobertura inicial parecia alta, principalmente em linhas, mas o Stryker mostrou que muitos comportamentos importantes ainda nao eram validados.</p>
+      <div class="metric-grid">
+        <div class="metric"><strong>98,64%</strong><span>Cobertura inicial de linhas</span></div>
+        <div class="metric"><strong>85,41%</strong><span>Cobertura inicial de statements</span></div>
+        <div class="metric"><strong>58,82%</strong><span>Cobertura inicial de branches</span></div>
+        <div class="metric"><strong>73,71%</strong><span>Mutation score inicial</span></div>
+      </div>
+      <table>
+        <thead>
+          <tr><th>Execucao inicial</th><th>Resultado</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Testes Jest</td><td>50 testes passaram</td></tr>
+          <tr><td>Cobertura</td><td>Linhas 98,64%; statements 85,41%; funcoes 100%; branches 58,82%</td></tr>
+          <tr><td>Stryker</td><td>213 mutantes instrumentados; 154 mortos; 44 sobreviventes; 12 sem cobertura; 3 timeout</td></tr>
+        </tbody>
+      </table>
+      <p>A discrepancia principal e que cobertura mede se uma linha foi executada, enquanto teste de mutacao mede se a suite percebe alteracoes pequenas no comportamento. Assim, linhas executadas por testes fracos continuaram permitindo mutantes sobreviventes.</p>
+    </section>
+
+    <section>
+      <h2>Analise de Mutantes Criticos</h2>
+      <p>As capturas abaixo reproduzem os trechos relevantes do relatorio/saida do Stryker na primeira execucao, antes dos novos testes.</p>
+
+      <h3>1. Raiz quadrada de numero negativo</h3>
+      <div class="screenshot">
+        <div class="shotbar">Stryker - mutante sobrevivente</div>
+        <div class="shotbody"><span class="survived">[Survived] ConditionalExpression</span>
+src/operacoes.js:13:7
+- if (n &lt; 0) throw new Error('Nao e possivel calcular a raiz quadrada de um numero negativo.');
++ if (false) throw new Error('Nao e possivel calcular a raiz quadrada de um numero negativo.');
+
+Tests ran:
+  6. deve calcular a raiz quadrada de um quadrado perfeito</div>
+      </div>
+      <p>O teste original so validava <code>raizQuadrada(16)</code>. Quando o Stryker removeu a protecao contra valores negativos, nenhum teste chamou a funcao com entrada negativa, entao a mutacao sobreviveu.</p>
+
+      <h3>2. Verificacao de numeros primos</h3>
+      <div class="screenshot">
+        <div class="shotbar">Stryker - mutante sobrevivente</div>
+        <div class="shotbody"><span class="survived">[Survived] BlockStatement</span>
+src/operacoes.js:74:31
+- for (let i = 2; i &lt; n; i++) {
+-   if (n % i === 0) return false;
+- }
++ for (let i = 2; i &lt; n; i++) {}
+
+Tests ran:
+  33. deve verificar que um numero e primo</div>
+      </div>
+      <p>A suite original testava apenas <code>isPrimo(7)</code> retornando <code>true</code>. Remover a deteccao de divisores nao altera esse caso, mas quebra numeros compostos como 4 e 9.</p>
+
+      <h3>3. Mediana de array par ou desordenado</h3>
+      <div class="screenshot">
+        <div class="shotbar">Stryker - mutante sobrevivente</div>
+        <div class="shotbody"><span class="survived">[Survived] MethodExpression</span>
+src/operacoes.js:109:18
+- const sorted = [...numeros].sort((a, b) =&gt; a - b);
++ const sorted = [...numeros];
+
+<span class="survived">[Survived] ConditionalExpression</span>
+src/operacoes.js:111:7
+- if (sorted.length % 2 === 0) {
++ if (false) {
+
+Tests ran:
+  47. deve calcular a mediana de um array impar e ordenado</div>
+      </div>
+      <p>O teste original usava um array impar ja ordenado. Por isso, remover a ordenacao ou ignorar a regra de arrays pares nao mudava o resultado observado.</p>
+    </section>
+
+    <section>
+      <h2>Solucao Implementada</h2>
+      <p>Foram adicionados 7 testes direcionados por mutacao, elevando a suite de 50 para 57 testes. Os novos casos cobrem caminhos de erro, fronteiras e resultados falsos que antes nao eram exercitados.</p>
+      <ul>
+        <li><strong>Entradas invalidas:</strong> raiz quadrada negativa, fatorial negativo, divisao por zero com mensagem, inverso de zero, arrays vazios em maximo/minimo/mediana.</li>
+        <li><strong>Fronteiras:</strong> fatorial de 0 e 1, raiz de 0, <code>clamp</code> abaixo, acima e exatamente em <code>min</code>/<code>max</code>.</li>
+        <li><strong>Casos falsos:</strong> numero par/impar falso, divisibilidade falsa, comparacoes <code>&gt;</code>/<code>&lt;</code> com igualdade e desigualdade contraria, igualdade falsa.</li>
+        <li><strong>Dados reveladores:</strong> Celsius 100 e Fahrenheit 212 para matar mutantes de operadores que passavam com 0/32.</li>
+        <li><strong>Mediana:</strong> arrays pares, desordenados e vazios para validar ordenacao, ramo par e erro.</li>
+      </ul>
+      <p>Tambem foram removidas duas condicoes redundantes em <code>fatorial</code> e <code>produtoArray</code>, pois o acumulador ja preservava o comportamento correto. Dois mutantes equivalentes de igualdade em <code>clamp</code> foram documentados com diretivas do Stryker, porque <code>valor === min</code> e <code>valor === max</code> retornam o mesmo resultado tanto com comparacao estrita quanto inclusiva.</p>
+    </section>
+
+    <section>
+      <h2>Resultados Finais</h2>
+      <div class="metric-grid">
+        <div class="metric"><strong>57</strong><span>Testes Jest passando</span></div>
+        <div class="metric"><strong>100%</strong><span>Cobertura final de linhas</span></div>
+        <div class="metric"><strong>100%</strong><span>Cobertura final de branches</span></div>
+        <div class="metric"><strong>100%</strong><span>Mutation score final</span></div>
+      </div>
+      <div class="screenshot">
+        <div class="shotbar">Stryker - resultado final</div>
+        <div class="shotbody"><span class="killed">All files | Mutation score 100.00%</span>
+File          total   covered   killed   timeout   survived   no cov
+operacoes.js 100.00  100.00    195      4         0          0
+
+HtmlReporter:
+reports/mutation/mutation.html</div>
+      </div>
+      <table>
+        <thead>
+          <tr><th>Metrica</th><th>Inicial</th><th>Final</th><th>Evolucao</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Cobertura de linhas</td><td>98,64%</td><td>100%</td><td>+1,36 p.p.</td></tr>
+          <tr><td>Cobertura de branches</td><td>58,82%</td><td>100%</td><td>+41,18 p.p.</td></tr>
+          <tr><td>Mutation score</td><td>73,71%</td><td>100%</td><td>+26,29 p.p.</td></tr>
+          <tr><td>Mutantes sobreviventes</td><td>44</td><td>0</td><td>-44</td></tr>
+        </tbody>
+      </table>
+      <div class="note">O comando literal <code>npm test -- --coverage</code> nao repassou <code>--coverage</code> ao Jest neste ambiente; para medir cobertura foi usado o script equivalente <code>npm run coverage</code>, que executa <code>jest --coverage</code>.</div>
+    </section>
+
+    <section>
+      <h2>Conclusao</h2>
+      <p>O teste de mutacao expôs que uma cobertura de linhas alta nao garante uma suite forte. A primeira suite executava quase todo o codigo, mas deixava passar alteracoes simples em condicionais, operadores e validacoes de erro. A melhoria veio de testes orientados por comportamento: casos de borda, entradas invalidas e resultados negativos. Com isso, a suite passou a detectar as alteracoes artificiais do Stryker e atingiu mutation score superior a 98%.</p>
+    </section>
+  </main>
+
+  <footer>
+    Relatorio gerado a partir de execucoes locais de Jest e StrykerJS.
+  </footer>
+</body>
+</html>
